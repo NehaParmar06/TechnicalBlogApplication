@@ -8,24 +8,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 @Controller
-public class HomeController {
-
-    public HomeController(){
-        System.out.println("**** HomeController ****");
-    }
+public class PostController {
 
     @Autowired
-    private PostService postservice;
+    private PostService postService;
 
-    @RequestMapping("/")
-    public String getAllPosts(Model model){
+    @RequestMapping("posts")
+    public String getUserPosts(Model model){
 
-        ArrayList<Post> posts = postservice.getAllPosts();
+        ArrayList<Post> posts = postService.getOnePost();
         model.addAttribute("posts", posts);
-
-        return "index";
+        return "posts";
     }
 }
